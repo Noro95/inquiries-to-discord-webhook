@@ -1,13 +1,17 @@
 {
-  "name": "inquiries-to-discord-webhook",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "deploy": "wrangler deploy",
-    "dev": "wrangler dev",
-    "start": "wrangler dev"
-  },
-  "devDependencies": {
-    "wrangler": "^3.60.3"
-  }
+	"name": "inquiries-to-discord-webhook",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"deploy": "wrangler deploy",
+		"dev": "wrangler dev",
+		"start": "wrangler dev"
+	},
+	"devDependencies": {
+		"wrangler": "^3.60.3"
+	},
+	"dependencies": {
+		"html-to-text": "9.0.4",
+		"postal-mime": "1.0.13"
+	}
 }
