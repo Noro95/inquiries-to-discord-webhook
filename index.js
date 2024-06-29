@@ -8,16 +8,17 @@ const DISCORD_FILE_LIMIT = 8000000;
 
 export default {
   async email(message, env, _ctx) {
-    // If you want to forward the email to another address, you can do it here.
-    await message.forward(env.FORWARD_TO_ADDRESS);
     switch (message.to) {
       case "inquiries@norowa.dev":
+        await message.forward(env.FORWARD_TO_ADDRESS);
         await sendToDiscord(message, env.INQUIRY_WEBHOOK);
         break;
       case "termination@norowa.dev":
+        await message.forward(env.FORWARD_TO_ADDRESS);
         await sendToDiscord(message, env.TERMINATION_WEBHOOK);
         break;
       default:
+        await sendToDiscord(message, env.CATCH_ALL_WEBHOOK);
         return;
     }
 

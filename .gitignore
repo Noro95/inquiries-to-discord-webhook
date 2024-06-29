@@ -170,3 +170,7 @@ dist
 
 .dev.vars
 .wrangler/
+
+# Lock file
+*.lock
+*-lock.*

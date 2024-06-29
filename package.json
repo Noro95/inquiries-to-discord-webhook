@@ -1,7 +1,6 @@
 {
-	"name": "inquiries-to-discord-webhook",
-	"version": "0.0.0",
-	"private": true,
+	"name": "emails-to-discord-webhook",
+	"version": "1.0.0",
 	"scripts": {
 		"deploy": "wrangler deploy",
 		"dev": "wrangler dev",

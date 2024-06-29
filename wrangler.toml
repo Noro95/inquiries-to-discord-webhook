@@ -1,4 +1,4 @@
-name = "inquiries-to-discord-webhook"
+name = "emails-to-discord-webhook"
 main = "index.js"
 compatibility_date = "2000-01-01"
 workers_dev = true
