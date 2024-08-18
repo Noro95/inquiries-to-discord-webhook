@@ -4,7 +4,7 @@ const { convert } = require('html-to-text');
 // It's 4096
 const DISCORD_EMBED_LIMIT = 4096;
 // This may be higher if your server is boosted to level 2, it should be 50MB. If your server is boosted to level 3, it should be 100MB.
-const DISCORD_FILE_LIMIT = 8000000;
+const DISCORD_FILE_LIMIT = 25 * 1000 * 1000;
 
 export default {
   async email(message, env, _ctx) {
@@ -16,6 +16,9 @@ export default {
       case "termination@norowa.dev":
         await message.forward(env.FORWARD_TO_ADDRESS);
         await sendToDiscord(message, env.TERMINATION_WEBHOOK);
+        break;
+      case "github@norowa.dev":
+        await sendToDiscord(message, env.GITHUB_WEBHOOK);
         break;
       default:
         await sendToDiscord(message, env.CATCH_ALL_WEBHOOK);
