@@ -8,23 +8,23 @@ const DISCORD_FILE_LIMIT = 25 * 1000 * 1000;
 
 export default {
   async email(message, env, _ctx) {
-    switch (message.to) {
-      case "inquiries@norowa.dev":
-        await message.forward(env.FORWARD_TO_ADDRESS);
-        await sendToDiscord(message, env.INQUIRY_WEBHOOK);
-        break;
-      case "termination@norowa.dev":
-        await message.forward(env.FORWARD_TO_ADDRESS);
-        await sendToDiscord(message, env.TERMINATION_WEBHOOK);
-        break;
-      case "github@norowa.dev":
-        await sendToDiscord(message, env.GITHUB_WEBHOOK);
-        break;
-      default:
-        await sendToDiscord(message, env.CATCH_ALL_WEBHOOK);
-        return;
+    if (message.to.startsWith("inquiries")) {
+      await message.forward(env.FORWARD_TO_ADDRESS);
+      await sendToDiscord(message, env.INQUIRY_WEBHOOK);
+      return;
     }
+    if (message.to.startsWith("termination")) {
+      await message.forward(env.FORWARD_TO_ADDRESS);
+      await sendToDiscord(message, env.TERMINATION_WEBHOOK);
+      return;
 
+    }
+    if (message.to.startsWith("github")) {
+      await sendToDiscord(message, env.GITHUB_WEBHOOK);
+      return;
+    }
+    await sendToDiscord(message, env.CATCH_ALL_WEBHOOK);
+    return;
   }
 }
 
